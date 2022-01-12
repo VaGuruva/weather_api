@@ -1,8 +1,8 @@
 <?php
 namespace App\Interfaces;
+use App\Entity\Prediction;
 
 interface WeatherServiceInterface
 {
-    public function predictionByCity(string $city, string $resource): iterable;
-    public function setPrediction(Prediction $prediction);
+    public function getPredictionByCity(string $city, string $resource): iterable;
 }
