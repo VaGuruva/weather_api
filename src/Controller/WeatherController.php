@@ -27,7 +27,7 @@ class WeatherController extends AbstractController
      */
     public function predictions(Request $request, WeatherService $weatherService): Response
     {
-        $cityName = $request->get('name');
+        $cityName = $request->get('city');
         $weatherElement = $request->get('weatherElement');
         $response = [];
 
