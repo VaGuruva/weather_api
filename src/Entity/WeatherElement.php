@@ -36,11 +36,11 @@ class WeatherElement
     /**
      * @ORM\ManyToMany(targetEntity=Prediction::class, mappedBy="weatherElements")
      */
-    private $predictions;
+    private $weatherPredictions;
     
     public function __construct()
     {
-        $this->predictions = new ArrayCollection();
+        $this->weatherPredictions = new ArrayCollection();
     }
 
     /**
@@ -48,21 +48,21 @@ class WeatherElement
      */
     public function getPredictions(): Collection
     {
-        return $this->predictions;
+        return $this->weatherPredictions;
     }
 
-    public function addPrediction(Prediction $prediction): self
+    public function addPrediction(Prediction $weatherPrediction): self
     {
-        if (!$this->predictions->contains($prediction)) {
-            $this->predictions[] = $prediction;
-            $prediction->addWeatherElement($this);
+        if (!$this->weatherPredictions->contains($weatherPrediction)) {
+            $this->weatherPredictions[] = $weatherPrediction;
+            $weatherPrediction->addWeatherElement($this);
         }
         return $this;
     }
 
-    public function removePrediction(Prediction $prediction): self
+    public function removePrediction(Prediction $weatherPrediction): self
     {
-        if ($this->predictions->removeElement($prediction)) {
+        if ($this->weatherPredictions->removeElement($weatherPrediction)) {
             $prediction->removeWeatherElement($this);
         }
         return $this;
