@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PredictionRepository;
 use Doctrine\ORM\Mapping as ORM;
-use App\Enity\WeatherElement;
+//use App\Enity\WeatherElement;
 
 /**
  * @ORM\Entity(repositoryClass=PredictionRepository::class)
@@ -34,7 +34,8 @@ class Prediction
     private $predictions = [];
 
     /**
-    * @ORM\ManyToMany(targetEntity=WeatherElement::class, inversedBy="weatherElements")
+    * @ORM\ManyToMany(targetEntity=WeatherElement::class, inversedBy="weatherPredictions")
+    * @ORM\JoinTable(name="predictions_weather_elements")
     */
    private $weatherElements;
 
@@ -43,10 +44,7 @@ class Prediction
        $this->weatherElements = new ArrayCollection();
    }
 
-   /**
-    * @return Collection|WeatherElement[]
-    */
-   public function getWeatherElements(): Collection
+   public function getWeatherElements(): ArrayCollection
    {
        return $this->weatherElements;
    }
