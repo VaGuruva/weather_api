@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Service;
+namespace App\Services;
 
 use Doctrine\DBAL\Driver\Connection;
 use App\Repository\PredictionRepository;
-use App\Model\WeatherServiceInterface;
+use App\Interfaces\WeatherServiceInterface;
 use App\Entity\Prediction;
 
 class WeatherService implements WeatherServiceInterface
@@ -24,12 +24,5 @@ class WeatherService implements WeatherServiceInterface
         $cityPredictions = $this->predictionRepository->findByCity($city, $weatherElement);
 
         return $cityPredictions;
-    }
-
-    /**
-     * Set prediction
-     */
-    public function setPrediction(Prediction $prediction) {
-
     }
 }
